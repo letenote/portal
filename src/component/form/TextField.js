@@ -15,7 +15,8 @@ const TextField = ({
 	 onBlur = () => console.warn("handle onBlur Event Here..."),
 	 onKeyUp = () => console.warn("handle onKeyUp Event Here..."),
 	 tabIndex = "set TabIndex here...",
-	 onSelect = () => console.warn("handle onSelect Event Here...")
+	 onSelect = () => console.warn("handle onSelect Event Here..."),
+	 autoComplete = 'nofill' || 'off'
  }) => {
 	const [ showPS, setShowPS ] = useState(false);
 	const showError = validation?.isError && validation?.isTouched;
@@ -64,6 +65,7 @@ const TextField = ({
 					id={id}
 					name={name}
 					placeholder={placeholder}
+					autoComplete={autoComplete}
 					type={
 						type === 'password'
 							? showPS

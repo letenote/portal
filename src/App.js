@@ -5,6 +5,7 @@ const Layout = lazy(() => import('component/Layout'));
 const Login = lazy(() => import('container/login/Login'));
 const Protected = lazy(() => import('container/Protected'));
 const RequireAuth = lazy(() => import('component/RequireAuth'));
+const Page404 = lazy(() => import('container/Page404'));
 
 function App() {
   return (
@@ -27,6 +28,16 @@ function App() {
               <React.Suspense fallback={<>...</>}>
                 <RequireAuth>
                   <Protected />
+                </RequireAuth>
+              </React.Suspense>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <React.Suspense fallback={<>...</>}>
+                <RequireAuth>
+                  <Page404 />
                 </RequireAuth>
               </React.Suspense>
             }

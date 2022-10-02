@@ -104,6 +104,7 @@ const Login = () => {
 													name={currentDefaultField.targetValue} // => path obj for store/save value
 													placeholder={currentDefaultField.placeholder}
 													type={currentDefaultField.type}
+													autoComplete={currentDefaultField.autoComplete}
 													onChange={(e) => onChangeHandler(e.target.value, form)}
 													// onBlur={fields.handleBlur}
 													value={currentDefaultField.value}
@@ -128,8 +129,24 @@ const Login = () => {
 					</React.Suspense>
 				</div>
 			</div>
+			<div style={copyrightStyle}>
+				Copyright © 2019 Prudential Indonesia. All right reserved.
+			</div>
 		</div>
 	)
+}
+
+const copyrightStyle = {
+	display: 'table',
+	paddingBottom: 30,
+	bottom: 0,
+	margin: 'auto',
+	position: 'absolute',
+	left: 0,
+	right: 0,
+	fontFamily: 'FSAlbertPro',
+	fontSize: 14,
+	color: '#7d7d7d'
 }
 
 export default memo(Login, (prevProps, nextProps) => {

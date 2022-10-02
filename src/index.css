@@ -32,25 +32,25 @@
 @font-face {
   font-family: "FSAlbertPro";
   src: local("FSAlbertPro"), url(fonts/FSAlbertPro.ttf) format('truetype');
-  font-display: auto;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "FSAlbertPro-light";
   src: local("FSAlbertPro-light"), url(fonts/FSAlbertPro-Light.ttf) format('truetype');
-  font-display: auto;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "FSAlbertPro-Bold";
   src: local("FSAlbertPro-Bold"), url(fonts/FSAlbertPro-Bold.ttf) format('truetype');
-  font-display: auto;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "FSAlbertPro-Black";
   src: local("FSAlbertPro-Black"), url(fonts/FSAlbertPro-ExtraBold.ttf) format('truetype');
-  font-display: auto;
+  font-display: swap;
 }
 
 body {

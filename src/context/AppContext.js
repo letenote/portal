@@ -1,20 +1,25 @@
 import React, { createContext, useState } from "react";
 
 const AppContext = (defaultValue) => {
-	const LangContext = createContext(defaultValue);
+	const UserContext = createContext(defaultValue);
 	const AppProvider = (props) => {
-		const [user, setUser] = useState(false);
-		const changeUser = e => setUser(true);
-		const langState = { user, changeUser };
+		const [user, setUser] = useState({
+			auth: false,
+			permissions: null
+		});
+		const updateUser = () => {
+
+		};
+		const globalState = { user, updateUser };
 		return (
-			<LangContext.Provider value={langState}>
+			<UserContext.Provider value={globalState}>
 				{props.children}
-			</LangContext.Provider>
+			</UserContext.Provider>
 		);
 	}
 
 	return {
-		LangContext,
+		UserContext,
 		AppProvider,
 	}
 };
