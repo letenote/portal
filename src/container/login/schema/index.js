@@ -5,10 +5,15 @@ export const formData = {
 		disable: false,
 		placeholder: "Enter email",
 		type: "text",
-		validationType: "string",
+		validationType: "email",
 		value: "",
 		targetValue: 'email.value',
 		required: true,
+		validation: {
+			isError: false,
+			isTouched: false,
+			message: ""
+		}
 	},
 	password: {
 		id: "password",
@@ -16,9 +21,14 @@ export const formData = {
 		disable: false,
 		placeholder: "Enter password",
 		type: "password",
-		validationType: "string",
+		validationType: "password",
 		value: "",
 		targetValue: 'password.value',
-		required: true
+		required: true,
+		validation: {
+			isError: false,
+			isTouched: false,
+			message: ""
+		}
 	}
 };

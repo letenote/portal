@@ -21,7 +21,7 @@ const TextField = ({
 	const showError = validation?.isError && validation?.isTouched;
 	const errorMessage = validation?.message || "";
 	const onSelectEventByType = ["date"]
-	console.log("---> TextField Render", label, showError)
+	console.log("---> TextField Render", id, label, showError)
 
 	return (
 		<div

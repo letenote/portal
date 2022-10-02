@@ -1,10 +1,11 @@
-import React, {memo, useEffect, useState} from "react";
+import React, {memo, useCallback, useEffect, useState} from "react";
 
 const GetFormElement = React.lazy(() => import('component/GetFormElement'));
 const Button = React.lazy(() => import('component/Button'));
 const Login = () => {
-	const [forms, setForms] = useState({});
+	const [forms, setForms] = useState(null);
 	const [loaded, setLoaded] = useState(false);
+	const [submitLoading, setSubmitLoading] = useState(false)
 	console.log("Login render")
 
 	useEffect(() => {
@@ -16,6 +17,44 @@ const Login = () => {
 				return setLoaded(true)
 			});
 	},[]);
+
+	const onChangeHandler = useCallback((newValue, field) => {
+		return setForms(prev => ({
+			...prev,
+			[field]: {
+				...prev[field],
+				value: newValue,
+				validation: {
+					...prev[field]['validation'],
+					isError: false,
+					isTouched: false,
+					message: ''
+				}
+			}
+		}))
+	},[setForms]);
+
+	const submitHandler = useCallback(() => {
+		return setSubmitLoading(true);
+	},[setSubmitLoading]);
+
+	useEffect(() => {
+		import('./validation')
+			.then((validation) => {
+				return validation.submit( forms, setForms )
+			})
+			.then(() => {
+				return setSubmitLoading(false)
+			})
+	},[submitLoading]);
+
+	useEffect(() => {
+		return () => {
+			setForms(null);
+			setLoaded(false);
+			setSubmitLoading(false)
+		}
+	},[])
 
 	return(
 		<div className="background" style={{
@@ -65,14 +104,14 @@ const Login = () => {
 													name={currentDefaultField.targetValue} // => path obj for store/save value
 													placeholder={currentDefaultField.placeholder}
 													type={currentDefaultField.type}
-													// onChange={fields.handleChange}
+													onChange={(e) => onChangeHandler(e.target.value, form)}
 													// onBlur={fields.handleBlur}
 													value={currentDefaultField.value}
 													required={currentDefaultField.required}
 													validation={{
-														isError: false,
-														isTouched: false,
-														message: ''
+														isError: currentDefaultField.validation.isError,
+														isTouched: currentDefaultField.validation.isTouched,
+														message: currentDefaultField.validation.message
 													}}
 												/>
 											)
@@ -82,6 +121,8 @@ const Login = () => {
 								type="submit"
 								title={"LOGIN"}
 								style={{ marginTop: 10, marginBottom: 25 }}
+								loadingIndicator={submitLoading}
+								onClick={() => submitHandler()}
 							/>
 						</div>
 					</React.Suspense>
