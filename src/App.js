@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import 'App.css';
 import {Routes, Route} from "react-router-dom";
 
-const Layout = React.lazy(() => import('component/Layout'));
-const Login = React.lazy(() => import('container/Login'));
-const Protected = React.lazy(() => import('container/Protected'));
-const RequireAuth = React.lazy(() => import('component/RequireAuth'));
+const Layout = lazy(() => import('component/Layout'));
+const Login = lazy(() => import('container/Login'));
+const Protected = lazy(() => import('container/Protected'));
+const RequireAuth = lazy(() => import('component/RequireAuth'));
 
 function App() {
   return (
@@ -15,9 +15,11 @@ function App() {
           <Route
             index
             element={
-              <RequireAuth>
-                <Protected />
-              </RequireAuth>
+              <React.Suspense fallback={<>...</>}>
+                {/*<RequireAuth>*/}
+                  <Login />
+                {/*</RequireAuth>*/}
+              </React.Suspense>
             }
           />
           <Route
@@ -30,14 +32,14 @@ function App() {
               </React.Suspense>
             }
           />
-          <Route
-            path="login"
-            element={
-              <React.Suspense fallback={<>...</>}>
-                <Login />
-              </React.Suspense>
-            }
-          />
+          {/*<Route*/}
+          {/*  path="login"*/}
+          {/*  element={*/}
+          {/*    <React.Suspense fallback={<>...</>}>*/}
+          {/*      <Login />*/}
+          {/*    </React.Suspense>*/}
+          {/*  }*/}
+          {/*/>*/}
         </Route>
       </Routes>
     </div>

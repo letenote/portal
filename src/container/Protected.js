@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 const Protected = () => {
 	console.log("protected render")
@@ -34,6 +34,6 @@ const Protected = () => {
 	)
 }
 
-export default React.memo(Protected, (prevProps, nextProps) => {
+export default memo(Protected, (prevProps, nextProps) => {
 	return JSON.stringify(prevProps) === JSON.stringify(nextProps);
 })

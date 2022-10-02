@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 const Login = () => {
 	console.log("Login render")
@@ -21,6 +21,6 @@ const Login = () => {
 	)
 }
 
-export default React.memo(Login, (prevProps, nextProps) => {
+export default memo(Login, (prevProps, nextProps) => {
 	return JSON.stringify(prevProps) === JSON.stringify(nextProps);
 })

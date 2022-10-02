@@ -8,12 +8,12 @@ import { BrowserRouter } from "react-router-dom";
 import AppContext from "./context/AppContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const { LangProvider } = AppContext;
+const { AppProvider } = AppContext;
 root.render(
 	<BrowserRouter>
-		<LangProvider>
+		<AppProvider>
 			<App />
-		</LangProvider>
+		</AppProvider>
 	</BrowserRouter>
 );
 

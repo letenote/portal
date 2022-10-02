@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 
 const AppContext = (defaultValue) => {
 	const LangContext = createContext(defaultValue);
-	const LangProvider = (props) => {
+	const AppProvider = (props) => {
 		const [user, setUser] = useState(false);
 		const changeUser = e => setUser(true);
 		const langState = { user, changeUser };
@@ -15,7 +15,7 @@ const AppContext = (defaultValue) => {
 
 	return {
 		LangContext,
-		LangProvider,
+		AppProvider,
 	}
 };
 
