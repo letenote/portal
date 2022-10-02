@@ -1,9 +1,8 @@
 import React, { lazy } from 'react';
-import 'App.css';
 import {Routes, Route} from "react-router-dom";
 
 const Layout = lazy(() => import('component/Layout'));
-const Login = lazy(() => import('container/Login'));
+const Login = lazy(() => import('container/login/Login'));
 const Protected = lazy(() => import('container/Protected'));
 const RequireAuth = lazy(() => import('component/RequireAuth'));
 

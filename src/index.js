@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import 'index.css';
+import 'App.css';
+import './fonts/FSAlbertPro.ttf';
+import './fonts/FSAlbertPro-Light.ttf';
+import './fonts/FSAlbertPro-Bold.ttf';
+import './fonts/FSAlbertPro-ExtraBold.ttf';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
