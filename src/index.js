@@ -11,8 +11,8 @@ import * as serviceWorkerRegistration from 'serviceWorkerRegistration';
 import reportWebVitals from 'reportWebVitals';
 import AppContext from "context/AppContext";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
 const { AppProvider } = AppContext;
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<AppProvider>
 		<App />
