@@ -9,17 +9,14 @@ import 'fonts/FSAlbertPro-ExtraBold.ttf';
 import App from 'App';
 import * as serviceWorkerRegistration from 'serviceWorkerRegistration';
 import reportWebVitals from 'reportWebVitals';
-import { BrowserRouter } from "react-router-dom";
 import AppContext from "context/AppContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const { AppProvider } = AppContext;
 root.render(
-	<BrowserRouter>
-		<AppProvider>
-			<App />
-		</AppProvider>
-	</BrowserRouter>
+	<AppProvider>
+		<App />
+	</AppProvider>
 );
 
 // If you want your app to work offline and load faster, you can change

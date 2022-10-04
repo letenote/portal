@@ -1,11 +1,13 @@
 import React, {memo, useCallback, useEffect, useState} from "react";
+import { useLocation } from "react-router-dom";
 
 const GetFormElement = React.lazy(() => import('component/GetFormElement'));
 const Button = React.lazy(() => import('component/Button'));
 const Login = () => {
 	const [forms, setForms] = useState(null);
 	const [loaded, setLoaded] = useState(false);
-	const [submitLoading, setSubmitLoading] = useState(false)
+	const [submitLoading, setSubmitLoading] = useState(false);
+	const location = useLocation();
 	console.log("Login render")
 
 	useEffect(() => {
@@ -63,6 +65,8 @@ const Login = () => {
 			backgroundRepeat: "no-repeat",
 			backgroundSize: "cover"
 		}}>
+			<div data-testid="login-page">login-page</div>
+			<div data-testid="login-page-route">{location.pathname}</div>
 			<div className="login-box card-shadow">
 				<div className="content">
 					<div style={{ display: "flex", justifyContent: "end", flexWrap: "nowrap", marginBottom: 88 }}>
