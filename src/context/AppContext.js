@@ -7,8 +7,11 @@ const AppContext = (defaultValue) => {
 			auth: false,
 			permissions: null
 		});
-		const updateUser = () => {
-
+		const updateUser = (props) => {
+			setUser({
+				auth: props.auth,
+				permissions: props.permisssions
+			});
 		};
 		const globalState = { user, updateUser };
 		return (

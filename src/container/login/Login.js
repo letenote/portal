@@ -1,15 +1,20 @@
-import React, {memo, useCallback, useEffect, useState} from "react";
-import { useLocation } from "react-router-dom";
+import React, {memo, useCallback, useContext, useEffect, useState} from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import AppContext from "context/AppContext";
 
 const GetFormElement = React.lazy(() => import('component/GetFormElement'));
 const Button = React.lazy(() => import('component/Button'));
+
+const { UserContext } = AppContext;
 const Login = () => {
 	const [forms, setForms] = useState(null);
 	const [loaded, setLoaded] = useState(false);
 	const [submitLoading, setSubmitLoading] = useState(false);
 	const location = useLocation();
-	console.log("Login render")
-
+	const { updateUser, user } = useContext(UserContext);
+	const navigate = useNavigate();
+	console.log("Login render", location)
+	console.log("isuser login no",user)
 	useEffect(() => {
 		import('./schema')
 			.then(({formData}) => {
@@ -36,19 +41,28 @@ const Login = () => {
 		}))
 	},[setForms]);
 
-	const submitHandler = useCallback(() => {
-		return setSubmitLoading(true);
+	const submitHandler = useCallback(async() => {
+		setSubmitLoading(true);
+		await updateUser({
+			auth: true,
+			permissions: {}
+		});
+		// return navigate("/");
+		console.log("isuser login",user)
 	},[setSubmitLoading]);
 
 	useEffect(() => {
-		import('./validation')
-			.then((validation) => {
-				return validation.submit( forms, setForms )
-			})
-			.then(() => {
-				return setSubmitLoading(false)
-			})
-	},[submitLoading]);
+		if(user.auth){
+			return navigate("/");
+		}
+		// import('./validation')
+		// 	.then((validation) => {
+		// 		return validation.submit( forms, setForms )
+		// 	})
+		// 	.then(() => {
+		// 		return setSubmitLoading(false)
+		// 	})
+	},[user]);
 
 	useEffect(() => {
 		return () => {

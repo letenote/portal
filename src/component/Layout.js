@@ -6,10 +6,10 @@ const Layout = () => {
 	const history = useLocation();
 	const isLoginPage = history.pathname === "/login";
 	const isHomePage = history.pathname === "/";
-	console.log("history", history)
+	console.log("render layout", history)
 	return (
 		<div>
-			{ isLoginPage || isHomePage ? null : <Sidebar/>}
+			{ isLoginPage ? null : <Sidebar/>}
 			<main
 				style={{
 					marginLeft: `${isLoginPage || isHomePage ? 0 : 25}%`,

@@ -10,12 +10,15 @@ import App from 'App';
 import * as serviceWorkerRegistration from 'serviceWorkerRegistration';
 import reportWebVitals from 'reportWebVitals';
 import AppContext from "context/AppContext";
+import { BrowserRouter } from 'react-router-dom';
 
 const { AppProvider } = AppContext;
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<AppProvider>
-		<App />
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
 	</AppProvider>
 );
 
